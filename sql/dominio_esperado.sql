@@ -109,3 +109,76 @@ SELECT *  FROM raw_taxi WHERE payment_type  IS NOT NULL AND payment_type  NOT IN
 SELECT payment_type, COUNT(*) AS quantidade FROM raw_taxi GROUP BY payment_type ORDER BY payment_type; 
 
 .print '========== VALORES MONETÁRIOS =========='
+-- Valores nulos
+SELECT
+    fare_amount,
+    extra,
+    mta_tax,
+    tip_amount,
+    tolls_amount,
+    improvement_surcharge,
+    total_amount,
+    congestion_surcharge,
+    Airport_fee
+FROM raw_taxi
+WHERE fare_amount IS NULL
+   OR extra  IS NULL
+   OR mta_tax  IS NULL
+   OR tip_amount  IS NULL
+   OR tolls_amount  IS NULL
+   OR improvement_surcharge  IS NULL
+   OR total_amount  IS NULL
+   OR congestion_surcharge  IS NULL
+   OR Airport_fee  IS NULL;
+
+-- Valores mínimos e máximo
+SELECT
+    MIN(fare_amount) AS fare_min,
+    MAX(fare_amount) AS fare_max,
+       
+    MIN(extra) AS extra_min,
+    MAX(extra) AS extra_max,
+       
+    MIN(mta_tax) AS mta_min,
+    MAX(mta_tax) AS mta_max,
+       
+    MIN(tip_amount) AS tip_min,
+    MAX(tip_amount) AS tip_max,
+       
+    MIN(tolls_amount) AS tolls_min,
+    MAX(tolls_amount) AS tolls_max,
+       
+    MIN(improvement_surcharge) AS improvement_min,
+    MAX(improvement_surcharge) AS improvement_max,
+       
+    MIN(congestion_surcharge) AS congestion_min,
+    MAX(congestion_surcharge) AS congestion_max,
+       
+    MIN(Airport_fee) AS airport_min,
+    MAX(Airport_fee) AS airport_max,
+       
+    MIN(total_amount) AS total_min,
+    MAX(total_amount) AS total_max
+FROM raw_taxi;
+
+-- Valores negativos
+SELECT
+    fare_amount,
+    extra,
+    mta_tax,
+    tip_amount,
+    tolls_amount,
+    improvement_surcharge,
+    total_amount,
+    congestion_surcharge,
+    Airport_fee
+FROM raw_taxi
+WHERE fare_amount < 0
+   OR extra < 0
+   OR mta_tax < 0
+   OR tip_amount < 0
+   OR tolls_amount < 0
+   OR improvement_surcharge < 0
+   OR total_amount < 0
+   OR congestion_surcharge < 0
+   OR Airport_fee < 0;
