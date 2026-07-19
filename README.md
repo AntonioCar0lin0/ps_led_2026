@@ -1,8 +1,8 @@
 ### COMO ABRIR O BANCO
-.\duckdb.exe taxi.duckdb
+````.\duckdb.exe taxi.duckdb````
 
 ### EXECUÇÃO DO SQL
-dominio_esperado.sql: .read sql/dominio_esperado.sql
+**dominio_esperado.sql:** ````.read sql/dominio_esperado.sql````
 
 ### COMO USAR O DUCKDB
 1. Abre o banco
