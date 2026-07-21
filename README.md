@@ -2,7 +2,7 @@
 ````.\duckdb.exe taxi.duckdb````
 
 ### EXECUÇÃO DO SQL
-**duplicatas.sql:** ````.read sql/duplicatas.sql````
+**nome_do_arquivo.sql:** ````.read sql/nome_do_arquivo.sql````
 
 ### COMO USAR O DUCKDB
 1. Abre o banco
