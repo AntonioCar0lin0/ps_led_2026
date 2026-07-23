@@ -2,7 +2,7 @@
 ````.\duckdb.exe taxi.duckdb````
 
 ### EXECUÇÃO DO SQL
-**dominio_esperado.sql:** ````.read sql/dominio_esperado.sql````
+**02_perfilamento_dominio_esperado:** ````.read sql/02_perfilamento_dominio_esperado````
 
 ### COMO USAR O DUCKDB
 1. Abre o banco
