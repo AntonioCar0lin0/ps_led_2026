@@ -1,3 +1,5 @@
+-- Cria as tabelas de brutas com os dados carregados
+
 -- Mostra a tabela principal
 .print '========== TABELA PRINCIPAL =========='
 CREATE OR REPLACE TABLE raw_taxi AS SELECT * FROM read_parquet('data/yellow_tripdata_2024-01.parquet');

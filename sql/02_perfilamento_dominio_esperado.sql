@@ -1,3 +1,5 @@
+-- Consultas de perfilamento
+
 .print '========== COLUNA VendorID =========='
 -- Código dentro do padrão? 
 SELECT DISTINCT  VendorID FROM raw_taxi ORDER BY VendorID;

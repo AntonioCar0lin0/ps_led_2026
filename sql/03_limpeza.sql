@@ -1,0 +1,1 @@
+-- Aplicar as regras de limpeza e gerar a tabela tratada
