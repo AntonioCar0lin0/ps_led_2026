@@ -99,7 +99,7 @@ SELECT DISTINCT t.DOLocationID FROM raw_taxi t LEFT JOIN raw_taxi_zone z ON t.DO
 -- Valores distintos
 SELECT DISTINCT payment_type FROM raw_taxi ORDER BY payment_type;
 
--- Valores nulos                                                                                                    SELECT SUM(CASE WHEN payment_type IS NULL THEN 1 ELSE 0 END) AS payment_type FROM raw_taxi;
+-- Valores nulos                                                                                                    
 SELECT SUM(CASE WHEN payment_type IS NULL THEN 1 ELSE 0 END) AS payment_type FROM raw_taxi;
 
 -- Valores fora do escopo
