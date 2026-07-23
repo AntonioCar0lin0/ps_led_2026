@@ -29,6 +29,9 @@ SELECT tpep_dropoff_datetime FROM raw_taxi WHERE MONTH(tpep_dropoff_datetime) <>
 -- Término da corrida
 SELECT * FROM raw_taxi WHERE tpep_dropoff_datetime < tpep_pickup_datetime; 
 
+-- Corridas iniciadas em Fevereiro
+SELECT * FROM raw_taxi WHERE YEAR(tpep_pickup_datetime) = 2024 AND MONTH(tpep_pickup_datetime) = 2;
+
 .print '========== COLUNA passenger_count =========='
 -- Existência de valores negativos
 SELECT COUNT(*) FROM raw_taxi WHERE passenger_count < 0;
