@@ -1,9 +1,3 @@
--- Carrega a tabela principal
-CREATE OR REPLACE TABLE raw_taxi AS SELECT * FROM read_parquet('data/yellow_tripdata_2024-01.parquet');
-
--- Carrega a tabela de referência (para traduzir códigos de localização) 
-CREATE OR REPLACE TABLE raw_taxi_zone AS SELECT * FROM read_csv_auto('data/taxi_zone_lookup.csv');
-
 -- Mostra estatísticas de cada coluna numérica da tabela principal (min, max, media, mediana, quartis)
 .print 'Estatísticas das colunas numéricas da tabela principal'
 

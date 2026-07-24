@@ -1,9 +1,3 @@
--- Carrega a tabela principal
-CREATE OR REPLACE TABLE raw_taxi AS SELECT * FROM read_parquet('data/yellow_tripdata_2024-01.parquet');
-
--- Carrega a tabela de referência (para traduzir códigos de localização) 
-CREATE OR REPLACE TABLE raw_taxi_zone AS SELECT * FROM read_csv_auto('data/taxi_zone_lookup.csv');
-
 -- Mostra cada taxa, a soma total das taxas e o total_amount
 .print 'Tabela das taxas, soma e total_amount'
 select fare_amount, extra, mta_tax, tip_amount, tolls_amount, improvement_surcharge, congestion_surcharge, airport_fee,

@@ -1,16 +1,25 @@
 # Consultas e uso do DuckDB 🎲
 
 ## COMO ABRIR O BANCO
-````.\duckdb.exe taxi.duckdb````
+No terminal: `.\duckdb.exe taxi.duckdb`
 
 ### EXECUÇÃO DO SQL
-**nome_do_arquivo.sql:** ````.read sql/nome_do_arquivo.sql````
+**nome_do_arquivo.sql:** `.read caminho_do_arquivo/nome_do_arquivo.sql`
 
 ## COMO USAR O DUCKDB
-1. Adiciona os arquivos das tabelas (pasta data)
+1. Adiciona os arquivos das tabelas (pasta data/01_raw)
 2. Abre o banco
-3. Cria um arquivo para ler as tabelas com ````CREATE OR REPLACE TABLE```` (01_load.sql)
-4. Escreve em um novo arquivo sql as consultas feitas (02_perfilamento_dominio_esperado.sql). As consultas podem inicialmente serem feita diretamente no terminal após abrir o banco para ter uma visualização mais rápida.
+
+### Load & Perfilamento
+1. No terminal, com o banco do duckdb aberto, executar o arquivo `sql/load.sql` para ler as tabelas.
+2. Escreve em um novo arquivo sql as consultas feitas para o perfilamento em `sql/01_perfilamento/nome_do_arquivo.sql`. As consultas podem inicialmente ser feitas diretamente no terminal após abrir o banco para ter uma visualização mais rápida.
+
+### Clean
+1. Após a etapa de load e com os dados carregados, rodar cada arquivo dentro da pasta `sql/02_limpeza`.
+2. Quando os arquivos de limpeza tiverem sido rodados, rodar o arquivo `sql/clean.sql` para carregar os dados limpos para `data/02_clean`.
+
+### Modelagem
+TO-DO
 
 ## WAL
 - **Write-Ahead Log (WAL) do DuckDB:** é como um diário temporário onde o DuckDB registra as alterações antes de gravá-las definitivamente no banco. É um mecanismo de segurança.

@@ -1,0 +1,1 @@
+COPY clean_taxi TO 'data/02_clean/yellow_tripdata_2024-01_clean.parquet' (FORMAT PARQUET);
