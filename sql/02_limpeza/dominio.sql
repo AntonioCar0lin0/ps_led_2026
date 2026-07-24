@@ -1,1 +1,1 @@
-DELETE FROM clean_taxi WHERE YEAR(tpep_pickup_datetime) != 2024 AND MONTH(tpep_pickup_datetime) != 1;
+DELETE FROM clean_taxi WHERE YEAR(tpep_pickup_datetime) != 2024 OR MONTH(tpep_pickup_datetime) != 1;
