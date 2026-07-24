@@ -1,2 +1,10 @@
 taxi.duckdb
 *.duckdb
+*.duckdb.wal
+duckdb.exe
+
+data/02_clean/*
+!data/02_clean/.gitkeep
+
+data/03_processed/*
+!data/03_processed/.gitkeep
