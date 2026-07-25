@@ -19,7 +19,8 @@ No terminal: `.\duckdb.exe taxi.duckdb`
 2. Quando os arquivos de limpeza tiverem sido rodados, rodar o arquivo `sql/clean.sql` para carregar os dados limpos para `data/02_clean`.
 
 ### Modelagem
-TO-DO
+1. Após a etapa de limpeza dos dados, rodar cada arquivo da pasta `sql/03_modelagem`.
+2. Quando os arquivos de modelagem tiverem sido rodados (todas as tabelas de dimensão foram criadas e populadas), rodar o arquivo `sql/modelagem.sql` para criar e popular a tabela fato.
 
 ## WAL
 - **Write-Ahead Log (WAL) do DuckDB:** é como um diário temporário onde o DuckDB registra as alterações antes de gravá-las definitivamente no banco. É um mecanismo de segurança.
