@@ -10,17 +10,24 @@ No terminal: `.\duckdb.exe taxi.duckdb`
 1. Adiciona os arquivos das tabelas (pasta data/01_raw)
 2. Abre o banco
 
-### Load & Perfilamento
-1. No terminal, com o banco do duckdb aberto, executar o arquivo `sql/load.sql` para ler as tabelas.
-2. Escreve em um novo arquivo sql as consultas feitas para o perfilamento em `sql/01_perfilamento/nome_do_arquivo.sql`. As consultas podem inicialmente ser feitas diretamente no terminal após abrir o banco para ter uma visualização mais rápida.
+### 00-Load
+1. No terminal, com o banco do duckdb aberto, executar o arquivo `sql/00_ingestao/load_data.sql` para carregar os arquivos com dados brutos.
+
+### Perfilamento (Opcional)
+1. Após o load, executar os arquivos na pasta `sql/01_perfilamento`. As consultas podem inicialmente ser feitas diretamente no terminal após abrir o banco para ter uma visualização mais rápida.
 
 ### Clean
-1. Após a etapa de load e com os dados carregados, rodar cada arquivo dentro da pasta `sql/02_limpeza`.
-2. Quando os arquivos de limpeza tiverem sido rodados, rodar o arquivo `sql/clean.sql` para carregar os dados limpos para `data/02_clean`.
+1. Após a etapa de load e com os dados carregados, executar individualmente cada arquivo dentro da pasta `sql/02_limpeza/tratamentos`.
+2. Quando os arquivos de limpeza tiverem sido executados, rodar o arquivo `sql/02_limpeza/clean.sql` para carregar os dados limpos para `data/02_clean`.
 
 ### Modelagem
-1. Após a etapa de limpeza dos dados, rodar cada arquivo da pasta `sql/03_modelagem`.
-2. Quando os arquivos de modelagem tiverem sido rodados (todas as tabelas de dimensão foram criadas e populadas), rodar o arquivo `sql/modelagem.sql` para criar e popular a tabela fato.
+1. Após a etapa de limpeza dos dados, rodar os arquivos da pasta `sql/03_modelagem` em ordem, primeiro a criação das tabelas de dimensão em `sql/03_modelagem/01_create_dim.sql`, depois a tabela fato em `sql/03_modelagem/02_create_fato.sql`.
+
+### Carga
+1. Após a criação das tabelas de dimensão e fato, para populá-las, executar os arquivos da pasta `sql/04_carga` em ordem, populando primeiro as tabelas de dimensão em `sql/04_carga/01_load_dim.sql`, depois a tabela fato em `sql/04_carga/02_load_fato.sql`.
+
+### Consultas Analíticas
+TO-DO
 
 ## WAL
 - **Write-Ahead Log (WAL) do DuckDB:** é como um diário temporário onde o DuckDB registra as alterações antes de gravá-las definitivamente no banco. É um mecanismo de segurança.
