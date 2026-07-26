@@ -37,3 +37,15 @@ CREATE TABLE IF NOT EXISTS dim_data(
     PU_datetime DATETIME,
     DO_datetime DATETIME
 );
+
+-- Cria a tabela dim_vendor
+CREATE TABLE IF NOT EXISTS dim_vendor (
+    id_vendor   INTEGER PRIMARY KEY,
+    vendor_nome VARCHAR(50) NOT NULL
+);
+
+-- Cria a tabela dim_tarifa
+CREATE TABLE IF NOT EXISTS dim_tarifa (
+    id_ratecode           INTEGER PRIMARY KEY,
+    tarifacode_descricao  VARCHAR(50) NOT NULL
+);
