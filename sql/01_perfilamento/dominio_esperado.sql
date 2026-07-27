@@ -175,3 +175,7 @@ WHERE fare_amount < 0
    OR total_amount < 0
    OR congestion_surcharge < 0
    OR Airport_fee < 0;
+
+
+-- Checa se há corridas com distancia 0 ou duração inferior a 30 segundos
+SELECT COUNT(*) FROM clean_taxi WHERE trip_distance = 0 OR EPOCH(tpep_dropoff_datetime - tpep_pickup_datetime) < 30;
