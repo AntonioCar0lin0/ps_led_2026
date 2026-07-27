@@ -13,3 +13,8 @@ with faixas_corridas as(
 select faixa_distancia, count(*) as total_corridas, to_seconds(round(avg(duracao_segundos), 0)) as media_tempo
 from faixas_corridas group by faixa_distancia
 order by case faixa_distancia when '10+' then 99 else 1 end, faixa_distancia; --ordenar em ordem crescente de distancia
+
+-- Qual a distância média percorrida de acordo com a quantidade de passageiros? 
+SELECT o.passenger_count AS quantidade_passageiros, ROUND(AVG(o.trip_distance), 2) AS distancia_media
+FROM fato_corrida f JOIN dim_operacao o ON f.id_operacao = o.id_operacao
+GROUP BY o.passenger_count ORDER BY o.passenger_count;

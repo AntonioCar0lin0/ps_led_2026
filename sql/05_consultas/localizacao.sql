@@ -15,3 +15,9 @@ from velocidades_corridas vc join dados_zonas dz on vc.id_localizacao = dz.id_lo
 where p.devolucao = 'N'
 group by dz.pu_borough, dz.pu_zone, dz.do_borough, dz.do_zone 
 having total_corridas > 10 order by velocidade_media desc limit 5;
+
+-- Quais são as 5 rotas que geram o maior faturamento total?
+SELECT l.PU_loc, l.DO_loc, SUM(p.total_amount) AS faturamento_total FROM fato_corrida f
+JOIN dim_localizacao l ON f.id_localizacao = l.id_localizacao
+JOIN dim_pagamento p ON f.id_pagamento = p.id_pagamento
+GROUP BY l.PU_loc, l.DO_loc ORDER BY faturamento_total DESC LIMIT 5;
