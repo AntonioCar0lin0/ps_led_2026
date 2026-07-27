@@ -1,6 +1,6 @@
 -- Cria tabela de detalhes do pagamento
 CREATE TABLE IF NOT EXISTS dim_pagamento_detalhes (
-    detalhes_pagamento INTEGER PRIMARY KEY,
+    id_detalhes_pagamento INTEGER PRIMARY KEY,
     fare_amount DECIMAL(10, 2) NOT NULL,
     extra DECIMAL(10, 2) NOT NULL,
     mta_tax DECIMAL(10, 2) NOT NULL,
@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS dim_pagamento (
     total_amount DECIMAL(10, 2) NOT NULL,
     store_fwd_flag CHAR(1) NOT NULL,
     devolucao CHAR(1) NOT NULL,
-    detalhes_pagamento INT NOT NULL,
+    id_detalhes_pagamento INT NOT NULL,
 
-    FOREIGN KEY (detalhes_pagamento) REFERENCES dim_pagamento_detalhes(detalhes_pagamento)
+    FOREIGN KEY (id_detalhes_pagamento) REFERENCES dim_pagamento_detalhes(id_detalhes_pagamento)
 );
 
 -- Cria a tabela dim_operacao
