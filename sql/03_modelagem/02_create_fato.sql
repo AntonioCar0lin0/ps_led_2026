@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS fato_corrida (
     id_corrida INTEGER PRIMARY KEY,
-    id_vendor INT,
-    id_ratecode INT,
-    id_localizacao INT,
-    id_data INT,
-    id_pagamento INT,
-    id_operacao INT,
+    id_vendor INT NOT NULL,
+    id_ratecode INT NOT NULL,
+    id_localizacao INT NOT NULL,
+    id_data INT NOT NULL,
+    id_pagamento INT NOT NULL,
+    id_operacao INT NOT NULL,
 
     FOREIGN KEY (id_data) REFERENCES dim_data(id_data),
     FOREIGN KEY (id_vendor) REFERENCES dim_vendor(id_vendor),
