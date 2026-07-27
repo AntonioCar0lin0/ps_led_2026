@@ -12,7 +12,7 @@ FROM clean_taxi c
     join dim_data d on c.tpep_pickup_datetime = d.PU_datetime and c.tpep_dropoff_datetime = d.DO_datetime
     join dim_vendor v on c.VendorID = v.id_vendor
     join dim_tarifa t on c.RatecodeID = t.id_ratecode
-    join dim_localizacao l on c.PULocationID = l.PU_location and c.DOLocationID = l.DO_location
+    join dim_localizacao l on c.PULocationID = l.PU_loc and c.DOLocationID = l.DO_loc
     join dim_operacao o on c.trip_distance = o.trip_distance and c.passenger_count = o.passenger_count and (c.tpep_dropoff_datetime - c.tpep_pickup_datetime) = o.duracao
     -- é necessário join com detalhes_pagamento para garantir que o id_pagamento correto seja passado para a fato, levando em conta que há amostras de pagamento com o mesmo payment_type, total_amount, store_fwd_flag e devolucao, mas com detalhes diferentes
     join dim_pagamento_detalhes dp on c.fare_amount = dp.fare_amount and c.extra = dp.extra and c.mta_tax = dp.mta_tax

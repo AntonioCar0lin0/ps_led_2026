@@ -98,3 +98,25 @@ SELECT DISTINCT
     END AS tarifacode_descricao
 FROM clean_taxi
 WHERE RatecodeID IS NOT NULL;
+
+-- Zona
+TRUNCATE TABLE dim_zona;
+-- Popula a tabela dim_zona a partir da tabela de referência de zonas (1 linha por LocationID)
+INSERT INTO dim_zona (id_zona, borough, zone, service_zone)
+SELECT
+    LocationID AS id_zona,
+    Borough AS borough,
+    Zone AS zone,
+    service_zone
+FROM raw_taxi_zone;
+
+-- Localizacao
+TRUNCATE TABLE dim_localizacao;
+-- Popula a tabela dim_localizacao levando em conta que há corridas diferentes com o mesmo par de zonas de pickup/dropoff, usando o mesmo id_localizacao para essas corridas.
+WITH localizacoes_distintas AS (
+    SELECT DISTINCT PULocationID, DOLocationID
+    FROM clean_taxi
+)
+INSERT INTO dim_localizacao (id_localizacao, PU_loc, DO_loc)
+SELECT ROW_NUMBER() OVER () AS id_localizacao, PULocationID, DOLocationID
+FROM localizacoes_distintas;

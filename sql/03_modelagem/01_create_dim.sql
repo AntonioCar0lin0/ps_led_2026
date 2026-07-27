@@ -49,3 +49,21 @@ CREATE TABLE IF NOT EXISTS dim_tarifa (
     id_ratecode           INTEGER PRIMARY KEY,
     tarifacode_descricao  VARCHAR(50) NOT NULL
 );
+
+-- Cria a tabela dim_zona
+CREATE TABLE IF NOT EXISTS dim_zona (
+    id_zona       INTEGER PRIMARY KEY,
+    borough       VARCHAR(50) NOT NULL,
+    zone          VARCHAR(100) NOT NULL,
+    service_zone  VARCHAR(50) NOT NULL
+);
+
+-- Cria a tabela dim_localizacao
+CREATE TABLE IF NOT EXISTS dim_localizacao (
+    id_localizacao INTEGER PRIMARY KEY,
+    PU_loc         INT NOT NULL,
+    DO_loc         INT NOT NULL,
+
+    FOREIGN KEY (PU_loc) REFERENCES dim_zona(id_zona),
+    FOREIGN KEY (DO_loc) REFERENCES dim_zona(id_zona)
+);
