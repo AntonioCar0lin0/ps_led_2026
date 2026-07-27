@@ -99,8 +99,9 @@ SELECT DISTINCT
 FROM clean_taxi
 WHERE RatecodeID IS NOT NULL;
 
--- Zona
+TRUNCATE TABLE dim_localizacao;
 TRUNCATE TABLE dim_zona;
+-- Zona
 -- Popula a tabela dim_zona a partir da tabela de referência de zonas (1 linha por LocationID)
 INSERT INTO dim_zona (id_zona, borough, zone, service_zone)
 SELECT
@@ -111,7 +112,6 @@ SELECT
 FROM raw_taxi_zone;
 
 -- Localizacao
-TRUNCATE TABLE dim_localizacao;
 -- Popula a tabela dim_localizacao levando em conta que há corridas diferentes com o mesmo par de zonas de pickup/dropoff, usando o mesmo id_localizacao para essas corridas.
 WITH localizacoes_distintas AS (
     SELECT DISTINCT PULocationID, DOLocationID
