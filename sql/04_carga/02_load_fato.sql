@@ -31,3 +31,5 @@ FROM clean_taxi c
             WHEN 'Voided Trip' THEN 6
         END
         and dp.id_detalhes_pagamento = p.id_detalhes_pagamento;
+
+COPY fato_corrida TO 'data/03_processed/fato_corrida.parquet' (FORMAT PARQUET);

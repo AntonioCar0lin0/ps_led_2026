@@ -120,3 +120,12 @@ WITH localizacoes_distintas AS (
 INSERT INTO dim_localizacao (id_localizacao, PU_loc, DO_loc)
 SELECT ROW_NUMBER() OVER () AS id_localizacao, PULocationID, DOLocationID
 FROM localizacoes_distintas;
+
+COPY dim_data TO 'data/03_processed/dim_data.parquet' (FORMAT PARQUET);
+COPY dim_operacao TO 'data/03_processed/dim_operacao.parquet' (FORMAT PARQUET);
+COPY dim_pagamento_detalhes TO 'data/03_processed/dim_pagamento_detalhes.parquet' (FORMAT PARQUET);
+COPY dim_pagamento TO 'data/03_processed/dim_pagamento.parquet' (FORMAT PARQUET);
+COPY dim_vendor TO 'data/03_processed/dim_vendor.parquet' (FORMAT PARQUET);
+COPY dim_tarifa TO 'data/03_processed/dim_tarifa.parquet' (FORMAT PARQUET);
+COPY dim_zona TO 'data/03_processed/dim_zona.parquet' (FORMAT PARQUET);
+COPY dim_localizacao TO 'data/03_processed/dim_localizacao.parquet' (FORMAT PARQUET);
