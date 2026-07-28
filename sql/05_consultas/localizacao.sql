@@ -21,3 +21,16 @@ SELECT l.PU_loc, l.DO_loc, SUM(p.total_amount) AS faturamento_total FROM fato_co
 JOIN dim_localizacao l ON f.id_localizacao = l.id_localizacao
 JOIN dim_pagamento p ON f.id_pagamento = p.id_pagamento
 GROUP BY l.PU_loc, l.DO_loc ORDER BY faturamento_total DESC LIMIT 5;
+
+-- Quais são as zonas de embarque e desembarque mais comuns?
+-- 5 zonas de embarque
+SELECT z.zone AS zona_embarque, COUNT(*) AS quantidade
+FROM fato_corrida f JOIN dim_localizacao l ON f.id_localizacao = l.id_localizacao
+JOIN dim_zona z ON l.PU_loc = z.id_zona
+GROUP BY z.zone ORDER BY quantidade DESC LIMIT 5;
+
+-- 5 zonas de desembarque
+SELECT z.zone AS zona_desembarque, COUNT(*) AS quantidade
+FROM fato_corrida f JOIN dim_localizacao l ON f.id_localizacao = l.id_localizacao
+JOIN dim_zona z ON l.DO_loc = z.id_zona
+GROUP BY z.zone ORDER BY quantidade DESC LIMIT 5;
