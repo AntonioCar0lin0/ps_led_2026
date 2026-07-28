@@ -18,3 +18,10 @@ order by case faixa_distancia when '10+' then 99 else 1 end, faixa_distancia; --
 SELECT o.passenger_count AS quantidade_passageiros, ROUND(AVG(o.trip_distance), 2) AS distancia_media
 FROM fato_corrida f JOIN dim_operacao o ON f.id_operacao = o.id_operacao
 GROUP BY o.passenger_count ORDER BY o.passenger_count;
+
+-- Qual o faturamento em média por corrida e total de cada vendedor?
+SELECT v.vendor_nome AS vendedor, ROUND(AVG(p.total_amount), 2) AS faturamento_medio, ROUND(SUM(p.total_amount), 2) AS faturamento_total
+FROM fato_corrida f JOIN dim_vendor v ON f.id_vendor = v.id_vendor
+JOIN dim_pagamento p ON f.id_pagamento = p.id_pagamento
+GROUP BY v.vendor_nome
+ORDER BY faturamento_total DESC;

@@ -8,3 +8,9 @@ SELECT ROUND(AVG(pd.tip_amount), 2) AS media_gorjeta FROM fato_corrida f
 JOIN dim_pagamento p ON f.id_pagamento = p.id_pagamento
 JOIN dim_pagamento_detalhes pd ON p.id_detalhes_pagamento = pd.id_detalhes_pagamento 
 WHERE pd.tip_amount > 0;
+
+-- Qual o volume e prejuízo total de devoluções realizadas?
+SELECT COUNT(*) AS volume_devolucoes, ROUND(SUM(p.total_amount), 2) AS prejuizo_total
+FROM fato_corrida f JOIN dim_pagamento p
+ON f.id_pagamento = p.id_pagamento
+WHERE p.devolucao = 'S';
