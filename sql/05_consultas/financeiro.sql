@@ -13,4 +13,4 @@ WHERE pd.tip_amount > 0;
 SELECT COUNT(*) AS volume_devolucoes, ROUND(SUM(p.total_amount), 2) AS prejuizo_total
 FROM fato_corrida f JOIN dim_pagamento p
 ON f.id_pagamento = p.id_pagamento
-WHERE p.devolucao = 'S';
+WHERE p.devolucao = 'Y';
